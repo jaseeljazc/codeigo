@@ -1,26 +1,180 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* =========================
+   BASE THEME VARIABLES
+========================= */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Core brand */
+    --primary: 252 65% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 252 45% 94%;
+    --primary-dark: 252 65% 48%;
+
+    /* Neutrals */
+    --background: 0 0% 99.6%;
+    --foreground: 240 10% 12%;
+    --muted: 240 6% 96%;
+    --muted-foreground: 240 5% 46%;
+
+    /* Surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+
+    /* Secondary & accent */
+    --secondary: 240 6% 96%;
+    --secondary-foreground: 240 10% 12%;
+    --accent: 252 30% 96%;
+    --accent-foreground: 252 65% 48%;
+
+    /* Borders & inputs */
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 252 65% 58%;
+
+    /* Feedback */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 252 65% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 252 30% 96%;
+    --sidebar-accent-foreground: 252 65% 48%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 252 65% 58%;
+  }
+
+  .dark {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+    --primary: 252 65% 65%;
+    --primary-foreground: 240 10% 6%;
+    --primary-muted: 252 30% 15%;
+    --primary-dark: 252 65% 55%;
+    --muted: 240 6% 15%;
+    --muted-foreground: 240 5% 65%;
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+    --secondary: 240 6% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 252 30% 15%;
+    --accent-foreground: 252 65% 75%;
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 252 65% 65%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 252 65% 65%;
+    --sidebar-primary-foreground: 240 10% 6%;
+    --sidebar-accent: 252 30% 15%;
+    --sidebar-accent-foreground: 252 65% 75%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 252 65% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Body text (default fallback) */
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+  }
+
+  /* Headings → Space Grotesk */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    @apply tracking-tight;
+  }
+
+  /* Paragraphs & spans → Poppins */
+  p,
+  span {
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================
+   COMPONENT UTILITIES
+========================= */
+
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-6xl px-5 sm:px-8;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* =========================
+   BACKGROUND UTILITIES
+========================= */
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+.section-divider {
+  position: relative;
+}
+
+.section-divider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    hsl(var(--primary) / 0.05),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* =========================
+   EXTRA UTILITIES
+========================= */
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        hsl(240 5% 70% / 0.18) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(240 5% 70% / 0.18) 1px,
+        transparent 1px
+      );
+    background-size: 36px 36px;
+  }
 }

@@ -1,6 +1,8 @@
-/* Google Fonts */
+/* =========================
+   GOOGLE FONTS (DEDUPED)
+========================= */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
@@ -22,100 +24,66 @@
     --muted: 240 6% 96%;
     --muted-foreground: 240 5% 46%;
 
-    /* Surface colors */
+    /* Surface */
     --card: 0 0% 100%;
     --card-foreground: 240 10% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 12%;
 
-    /* Secondary & accent */
+    /* Accent */
     --secondary: 240 6% 96%;
     --secondary-foreground: 240 10% 12%;
     --accent: 252 30% 96%;
     --accent-foreground: 252 65% 48%;
 
-    /* Borders & inputs */
+    /* UI */
     --border: 240 6% 90%;
     --input: 240 6% 90%;
     --ring: 252 65% 58%;
+    --radius: 0.625rem;
 
     /* Feedback */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-
-    --radius: 0.625rem;
-
-    /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 252 65% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 252 30% 96%;
-    --sidebar-accent-foreground: 252 65% 48%;
-    --sidebar-border: 240 6% 90%;
-    --sidebar-ring: 252 65% 58%;
   }
 
   .dark {
     --background: 240 10% 6%;
     --foreground: 0 0% 98%;
     --primary: 252 65% 65%;
-    --primary-foreground: 240 10% 6%;
     --primary-muted: 252 30% 15%;
     --primary-dark: 252 65% 55%;
     --muted: 240 6% 15%;
     --muted-foreground: 240 5% 65%;
     --card: 240 10% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 98%;
-    --secondary: 240 6% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --accent: 252 30% 15%;
-    --accent-foreground: 252 65% 75%;
     --border: 240 6% 20%;
-    --input: 240 6% 20%;
     --ring: 252 65% 65%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-
-    --sidebar-background: 240 10% 8%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 252 65% 65%;
-    --sidebar-primary-foreground: 240 10% 6%;
-    --sidebar-accent: 252 30% 15%;
-    --sidebar-accent-foreground: 252 65% 75%;
-    --sidebar-border: 240 6% 20%;
-    --sidebar-ring: 252 65% 65%;
   }
 
   * {
     @apply border-border;
   }
 
-  /* Body text (default fallback) */
   body {
     @apply bg-background text-foreground antialiased;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Headings → Space Grotesk */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
     font-family: "Space Grotesk", system-ui, sans-serif;
     @apply tracking-tight;
   }
 
-  /* Paragraphs & spans → Poppins */
-  p,
-  span {
+  /* Paragraphs only (NOT spans) */
+  p {
     font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", Roboto, sans-serif;
+  }
+  .font-display {
+    font-family: "Space Grotesk", system-ui, sans-serif;
   }
 }
 
@@ -134,13 +102,21 @@
 }
 
 /* =========================
-   BACKGROUND UTILITIES
+   BACKGROUND UTILITIES (OPTIMIZED)
 ========================= */
 
+/* ⚠️ REPLACED SVG NOISE WITH CSS GRAIN (CHEAP) */
 .bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      rgba(0, 0, 0, 0.05) 0 1px,
+      transparent 1px 3px
+    );
+  opacity: 0.04;
 }
 
+/* Section divider (static = safe) */
 .section-divider {
   position: relative;
 }
@@ -152,14 +128,14 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    hsl(var(--primary) / 0.05),
+    hsl(var(--primary) / 0.04),
     transparent
   );
   pointer-events: none;
 }
 
 /* =========================
-   EXTRA UTILITIES
+   GRID (LOWER COST)
 ========================= */
 
 @layer utilities {
@@ -167,14 +143,45 @@
     background-image:
       linear-gradient(
         to right,
-        hsl(240 5% 70% / 0.18) 1px,
+        hsl(240 5% 70% / 0.12) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        hsl(240 5% 70% / 0.18) 1px,
+        hsl(240 5% 70% / 0.12) 1px,
         transparent 1px
       );
-    background-size: 36px 36px;
+    background-size: 40px 40px;
+  }
+}
+
+/* =========================
+   MOTION UTILITIES
+========================= */
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform, opacity;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Accessibility + performance */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 }

@@ -7,20 +7,13 @@ import { About } from "./about/About";
 import { Services } from "./service/Services";
 import Steps from "./steps/Steps";
 import { Contact } from "./contact/Contact";
-import { BackgroundEffects } from "../components/BackgroundEffects";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen text-foreground">
-      {/* Global background */}
-      {/* <BackgroundEffects /> */}
-
-      {/* Navigation */}
-      {/* <Navbar /> */}
+    <div className="relative min-h-screen ">
 
       <main className="relative z-10">
         <Hero />
-
         <Services />
         <About />
         <Steps />

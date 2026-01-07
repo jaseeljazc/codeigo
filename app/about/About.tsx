@@ -1,24 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
-import AboutImg from "@/assets/about-img.png";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function About() {
-  return (
-    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
-     
+  const prefersReducedMotion = useReducedMotion();
 
+  return (
+    <section
+      id="about"
+      className="relative py-24 md:py-32 overflow-hidden"
+    >
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="will-change-transform"
           >
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground mb-6">
-              About Codeigo Solutions
+              About Codeigo Creations
             </h2>
 
             <div className="space-y-5 text-muted-foreground">
@@ -43,17 +46,17 @@ export function About() {
 
           {/* Visual element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : 0.15 }}
+            className="relative contain-paint"
           >
             <div className="relative aspect-[4/3]">
-              {/* Abstract layers */}
+              {/* Abstract layers (static = cheap) */}
               <div
                 className="absolute top-0 right-0 w-3/4 h-3/4
-                rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5"
+                rounded-2xl bg-linear-to-br from-primary/15 to-primary/5"
               />
 
               <div
@@ -61,15 +64,7 @@ export function About() {
                 rounded-2xl bg-muted border border-border"
               />
 
-              {/* Image container */}
-              <div
-                className="absolute top-1/2 left-1/2 w-1/2 h-1/2
-                -translate-x-1/2 -translate-y-1/2
-                rounded-xl bg-card border border-primary/20
-                shadow-xl overflow-hidden flex items-center justify-center"
-              ></div>
-
-              {/* Decorative dots */}
+              {/* Decorative dots (static) */}
               <div className="absolute top-8 left-8 w-2 h-2 rounded-full bg-primary" />
               <div className="absolute bottom-12 right-16 w-3 h-3 rounded-full bg-primary/40" />
               <div className="absolute top-1/2 right-8 w-1.5 h-1.5 rounded-full bg-primary/60" />

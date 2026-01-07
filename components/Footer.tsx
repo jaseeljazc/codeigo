@@ -9,7 +9,7 @@ export function Footer() {
             Codeigo<span className="text-primary">.</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Codeigo Solutions. All rights reserved.
+            © {currentYear} Codeigo Creations. All rights reserved.
           </p>
         </div>
       </div>

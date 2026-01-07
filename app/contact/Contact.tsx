@@ -1,34 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants, useReducedMotion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+/* ---------------- Variants ---------------- */
+
+const sectionVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
 };
 
-export function Contact() {
-  return (
-  <section
-  id="contact"
-  className="relative py-20 sm:py-28 lg:py-32  text-foreground overflow-x-hidden"
->
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full bg-primary/10 blur-[140px]" />
+/* ---------------- Component ---------------- */
+
+export function Contact() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.section
+      id="contact"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-120px" }}
+      className="relative py-20 sm:py-28 lg:py-32 overflow-x-hidden"
+    >
+      {/* Background glow (static, no animation) */}
+      <div className="absolute inset-0 pointer-events-none contain-paint">
+        <div
+          className="absolute top-1/3 left-1/2 -translate-x-1/2
+          w-[360px] h-[360px] sm:w-[420px] sm:h-[420px]
+          rounded-full bg-primary/10 blur-[120px]"
+        />
       </div>
 
-      {/* Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
         <motion.div
           variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="max-w-3xl mb-16 sm:mb-20 lg:mb-24"
         >
           <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
@@ -46,13 +70,7 @@ export function Contact() {
         </motion.div>
 
         {/* Contact rows */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.12 }}
-          className="max-w-5xl"
-        >
+        <motion.div className="max-w-5xl">
           <ContactRow
             icon={<Mail size={18} />}
             label="Email"
@@ -78,20 +96,19 @@ export function Contact() {
           />
         </motion.div>
 
-        {/* Footer note */}
-       <div className="pt-12 sm:pt-16">
-  <p className="text-sm text-muted-foreground">
-    We typically respond within 24 hours. Clear communication and
-    long-term collaboration matter to us.
-  </p>
-</div>
-
+        {/* Footer note (no animation = smoother) */}
+        <div className="pt-12 sm:pt-16">
+          <p className="text-sm text-muted-foreground">
+            We typically respond within 24 hours. Clear communication and
+            long-term collaboration matter to us.
+          </p>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
-/* ---------- Contact Row ---------- */
+/* ---------------- Row ---------------- */
 
 function ContactRow({
   icon,
@@ -116,8 +133,9 @@ function ContactRow({
         gap-4 sm:gap-0
         py-6 sm:py-8
         border-b border-border
-        hover:border-primary/50
         transition-colors
+        hover:border-primary/50
+        will-change-transform
       "
     >
       <div className="flex gap-4">
@@ -140,12 +158,10 @@ function ContactRow({
         </div>
       </div>
 
-      {/* Arrow hidden on mobile */}
       <ArrowUpRight
         size={18}
         className="
-          hidden sm:block
-          text-muted-foreground
+          hidden sm:block text-muted-foreground
           transition-transform duration-300
           group-hover:translate-x-1 group-hover:-translate-y-1
         "

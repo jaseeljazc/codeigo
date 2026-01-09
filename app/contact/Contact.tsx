@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants, useReducedMotion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram } from "lucide-react";
 
 /* ---------------- Variants ---------------- */
 
@@ -64,8 +64,8 @@ export function Contact() {
           </h2>
 
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Have a project in mind or need help refining an idea?
-            Reach out and let’s explore how we can help.
+            Have a project in mind or need help refining an idea? Reach out and
+            let’s explore how we can help.
           </p>
         </motion.div>
 
@@ -91,6 +91,13 @@ export function Contact() {
             icon={<MapPin size={18} />}
             label="Location"
             value="Remote — Worldwide"
+            description="Showcasing our work and client success stories"
+            href="#"
+          />
+          <ContactRow
+            icon={<Instagram size={18} />}
+            label="Instagram"
+            value="Codeigo-creations"
             description="Available across all time zones"
             href="#"
           />
@@ -139,9 +146,7 @@ function ContactRow({
       "
     >
       <div className="flex gap-4">
-        <div className="mt-1 text-primary shrink-0">
-          {icon}
-        </div>
+        <div className="mt-1 text-primary shrink-0">{icon}</div>
 
         <div>
           <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">

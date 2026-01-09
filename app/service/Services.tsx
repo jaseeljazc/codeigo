@@ -27,7 +27,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center  max-w-3xl mx-auto mb-20"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6">
             What we do

@@ -127,10 +127,10 @@ const ServicesGrid = () => {
               <p className="text-slate-600 mb-6">{service.description}</p>
 
               {/* CTA */}
-              <div className="flex items-center text-sm font-medium text-slate-400 transition-transform group-hover:translate-x-1">
+              {/* <div className="flex items-center text-sm font-medium text-slate-400 transition-transform group-hover:translate-x-1">
                 <span className="mr-2">Learn more</span>
                 <ArrowUpRight size={16} />
-              </div>
+              </div> */}
             </div>
           </motion.div>
         ))}

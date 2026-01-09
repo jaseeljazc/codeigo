@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, Variants, useReducedMotion } from "framer-motion";
@@ -27,6 +26,53 @@ const itemVariants: Variants = {
     },
   },
 };
+
+const stepsData = [
+  {
+    step: "01",
+    label: "IMMERSION",
+    title: "Discover",
+    items: [
+      "Understand business goals",
+      "Analyze user needs & behavior",
+      "Review technical constraints",
+      "Define core problems clearly",
+    ],
+  },
+  {
+    step: "02",
+    label: "FOUNDATION",
+    title: "Blueprint",
+    items: [
+      "Structure information logically",
+      "Plan scalable components",
+      "Define design tokens & styles",
+      "Create a clear technical plan",
+    ],
+  },
+  {
+    step: "03",
+    label: "CREATION",
+    title: "Construct",
+    items: [
+      "Build high-quality UI components",
+      "Ensure consistency across patterns",
+      "Optimize performance",
+      "Purposeful motion & interactions",
+    ],
+  },
+  {
+    step: "04",
+    label: "TRANSITION",
+    title: "Integrate",
+    items: [
+      "Seamless developer handoff",
+      "Provide system documentation",
+      "Support long-term scalability",
+      "Assist post-launch improvements",
+    ],
+  },
+];
 
 const Steps = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -77,52 +123,7 @@ const Steps = () => {
             className="grid grid-cols-1 md:grid-cols-4 gap-16 relative z-10
               place-items-center md:place-items-start md:ml-20"
           >
-            {[
-              {
-                step: "01",
-                label: "IMMERSION",
-                title: "Discover",
-                items: [
-                  "Stakeholder interviews",
-                  "Technical discovery",
-                  "User research",
-                  "Competitive analysis",
-                ],
-              },
-              {
-                step: "02",
-                label: "FOUNDATION",
-                title: "Blueprint",
-                items: [
-                  "System architecture",
-                  "Component inventory",
-                  "Design token creation",
-                  "Technical specification",
-                ],
-              },
-              {
-                step: "03",
-                label: "CREATION",
-                title: "Construct",
-                items: [
-                  "Component development",
-                  "Pattern documentation",
-                  "Accessibility audit",
-                  "Motion specification",
-                ],
-              },
-              {
-                step: "04",
-                label: "TRANSITION",
-                title: "Integrate",
-                items: [
-                  "Developer handoff",
-                  "Design system portal",
-                  "Governance planning",
-                  "Ongoing support",
-                ],
-              },
-            ].map((step) => (
+            {stepsData.map((step) => (
               <motion.div
                 key={step.step}
                 variants={itemVariants}
@@ -130,7 +131,7 @@ const Steps = () => {
               >
                 <div className="mb-7 flex flex-col items-center md:items-start">
                   <div className="inline-block mb-3">
-                    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-12 h-12 rounded-2xl flex items-center justify-center">
+                    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-12 h-12 rounded-xl flex items-center justify-center">
                       <span className="text-white text-xl font-semibold tabular-nums">
                         {step.step}
                       </span>

@@ -6,10 +6,7 @@ export function About() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section
-      id="about"
-      className="relative py-24 md:py-32 overflow-hidden"
-    >
+    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text content */}
@@ -32,9 +29,9 @@ export function About() {
               </p>
 
               <p className="leading-relaxed">
-                Started in 2020, we've worked with startups, local businesses,
-                and creative professionals who needed websites that actually
-                helped their business grow.
+                We’re excited to partner with startups, local businesses, and
+                creative professionals to deliver web development and design
+                solutions that support real business growth.
               </p>
 
               <p className="leading-relaxed">
@@ -49,7 +46,10 @@ export function About() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : 0.15 }}
+            transition={{
+              duration: 0.5,
+              delay: prefersReducedMotion ? 0 : 0.15,
+            }}
             className="relative contain-paint"
           >
             <div className="relative aspect-[4/3]">

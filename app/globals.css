@@ -185,3 +185,180 @@
     }
   }
 }
+
+/* =========================
+   PERFORMANCE UTILITIES
+========================= */
+
+@layer utilities {
+  /* CSS Containment for performance isolation */
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-content {
+    contain: content;
+  }
+  
+  .contain-strict {
+    contain: strict;
+  }
+
+  /* GPU Acceleration hints */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Optimized will-change (use sparingly, only during animations) */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  .will-change-auto {
+    will-change: auto;
+  }
+
+  /* Smooth transitions optimized for 60fps */
+  .transition-smooth {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .transition-snappy {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* =========================
+   SMOOTH SCROLLING
+========================= */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* =========================
+   ACCESSIBILITY UTILITIES
+========================= */
+
+@layer utilities {
+  /* Focus indicators - high contrast and visible */
+  .focus-ring {
+    @apply outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .focus-ring-inset {
+    @apply outline-none focus:ring-2 focus:ring-inset focus:ring-primary;
+  }
+
+  /* Touch targets - minimum 44x44px for mobile accessibility */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .touch-target-lg {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* =========================
+   OPTIMIZED HOVER STATES
+========================= */
+
+@layer utilities {
+  /* Only apply expensive effects on devices that support hover */
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+    
+    .hover-scale {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+/* =========================
+   FLUID TYPOGRAPHY
+========================= */
+
+@layer utilities {
+  /* Smooth text scaling across breakpoints using clamp() */
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  }
+  
+  .text-fluid-base {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+  
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  }
+  
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  }
+  
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  }
+  
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem);
+  }
+  
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  }
+  
+  .text-fluid-5xl {
+    font-size: clamp(3rem, 2.5rem + 2.5vw, 3.75rem);
+  }
+}
+
+/* =========================
+   RESPONSIVE SPACING
+========================= */
+
+@layer utilities {
+  /* Fluid spacing that scales smoothly */
+  .space-fluid-sm {
+    gap: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  }
+  
+  .space-fluid-md {
+    gap: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  }
+  
+  .space-fluid-lg {
+    gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  }
+}

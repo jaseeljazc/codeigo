@@ -57,14 +57,14 @@ export function Navbar() {
       {/* NAVBAR */}
       <nav
         ref={navRef}
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 contain-paint ${
           isScrolled
             ? "bg-background/60 backdrop-blur-md border-b border-border shadow-sm"
             : "bg-transparent"
         }`}
       >
         <div className="section-container">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
             {/* Logo */}
             <a
               href="#home"
@@ -72,13 +72,13 @@ export function Navbar() {
                 e.preventDefault();
                 scrollToSection("#home");
               }}
-              className="font-display font-semibold text-2xl tracking-tight"
+              className="font-display font-semibold text-xl sm:text-2xl tracking-tight focus-ring-inset touch-target"
             >
               Codeigo<span className="text-primary">.</span>
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -87,7 +87,7 @@ export function Navbar() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-md font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-md font-medium text-muted-foreground hover:text-primary transition-colors duration-200 focus-ring-inset touch-target"
                 >
                   {link.label}
                 </a>
@@ -98,7 +98,7 @@ export function Navbar() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary-dark transition-colors"
+                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary-dark transition-colors duration-200 focus-ring touch-target"
               >
                 Get in Touch
               </a>
@@ -107,8 +107,9 @@ export function Navbar() {
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileOpen((v) => !v)}
-              className="md:hidden p-2"
+              className="md:hidden p-2 focus-ring-inset touch-target-lg"
               aria-label="Toggle menu"
+              aria-expanded={isMobileOpen}
             >
               {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -125,9 +126,12 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+              transition={{
+                duration: prefersReducedMotion ? 0 : 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               onClick={() => setIsMobileOpen(false)}
-              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm md:hidden contain-paint"
               style={{ top: navHeight }}
             />
 
@@ -138,9 +142,9 @@ export function Navbar() {
               exit={{ opacity: 0, y: -10 }}
               transition={{
                 duration: prefersReducedMotion ? 0 : 0.25,
-                ease: "easeOut",
+                ease: [0.22, 1, 0.36, 1],
               }}
-              className="md:hidden fixed inset-x-0 z-50 bg-background border-b border-border"
+              className="md:hidden fixed inset-x-0 z-50 bg-background border-b border-border contain-paint gpu-accelerate"
               style={{
                 top: navHeight,
                 height: `calc(100dvh - ${navHeight}px)`,
@@ -148,7 +152,7 @@ export function Navbar() {
             >
               <div className="section-container py-6 flex flex-col h-full">
                 {/* Links */}
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
                   {navLinks.map((link) => (
                     <a
                       key={link.href}
@@ -157,7 +161,7 @@ export function Navbar() {
                         e.preventDefault();
                         scrollToSection(link.href);
                       }}
-                      className="text-xl font-medium text-muted-foreground hover:text-primary transition-colors"
+                      className="text-lg sm:text-xl font-medium text-muted-foreground hover:text-primary transition-colors duration-200 py-2 focus-ring-inset touch-target"
                     >
                       {link.label}
                     </a>
@@ -171,7 +175,7 @@ export function Navbar() {
                     e.preventDefault();
                     scrollToSection("#contact");
                   }}
-                  className="mt-auto mx-10 px-4 py-3 bg-primary text-primary-foreground rounded-lg text-center hover:bg-primary-dark transition-colors"
+                  className="mt-auto mx-4 sm:mx-10 px-4 py-3.5 bg-primary text-primary-foreground rounded-lg text-center hover:bg-primary-dark transition-colors duration-200 focus-ring touch-target"
                 >
                   Get in Touch
                 </a>

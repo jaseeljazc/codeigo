@@ -81,6 +81,7 @@ const cardVariants: Variants = {
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
+
 const ServicesGrid = () => {
   return (
     <div>
@@ -90,33 +91,47 @@ const ServicesGrid = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8"
       >
-        {services.map((service) => (
+        {services?.map((service) => (
           <motion.div
             key={service.title}
             variants={cardVariants}
             whileHover={{ y: -6 }}
-            className={`group relative bg-white/95
-                rounded-2xl p-6 border border-slate-200
-                transition-[transform,box-shadow]
-                hover:shadow-2xl overflow-hidden
-                ${service.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
+            onHoverStart={(e) => {
+              if (!e?.currentTarget) return;
+              (e.currentTarget as HTMLElement).style.willChange = "transform";
+            }}
+            onHoverEnd={(e) => {
+              if (!e?.currentTarget) return;
+              (e.currentTarget as HTMLElement).style.willChange = "auto";
+            }}
+         className={`group relative
+  rounded-2xl p-5 sm:p-6
+  bg-white/20
+  border border-white/30
+  shadow-xl shadow-black/5 
+  transition-[transform,box-shadow,background] duration-300
+  hover:shadow-2xl hover:bg-white/70
+  overflow-hidden
+  contain-paint
+  ${service.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
+
           >
             {/* Hover gradient (CSS only – no JS state) */}
             <div
               className={`absolute inset-0 opacity-0 group-hover:opacity-100
-                transition-opacity duration-300
-                bg-gradient-to-br ${service.gradient}`}
+                transition-opacity duration-300 ease-out
+                bg-gradient-to-br ${service.gradient} contain-paint`}
             />
 
             <div className="relative z-10">
               {/* Icon */}
-              <div className="flex items-center justify-center w-16 h-16 mb-6 bg-slate-50 rounded-xl">
+              <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 bg-slate-50 rounded-xl">
                 <service.icon
                   size={28}
                   strokeWidth={1.5}
-                  className={service.iconColor}
+                  className={`${service.iconColor} gpu-accelerate`}
                 />
               </div>
 
@@ -126,11 +141,7 @@ const ServicesGrid = () => {
 
               <p className="text-slate-600 mb-6">{service.description}</p>
 
-              {/* CTA */}
-              {/* <div className="flex items-center text-sm font-medium text-slate-400 transition-transform group-hover:translate-x-1">
-                <span className="mr-2">Learn more</span>
-                <ArrowUpRight size={16} />
-              </div> */}
+          
             </div>
           </motion.div>
         ))}

@@ -78,15 +78,15 @@ const Steps = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="py-28 md:py-40">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10">
+    <section className="py-20 sm:py-28 md:py-40">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-10">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="heading-font text-center text-gray-900 text-4xl md:text-5xl font-semibold tracking-tighter mb-6"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="heading-font text-center text-gray-900 text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tighter mb-5 sm:mb-6"
         >
           Intentional. Precise. Elegant.
         </motion.h2>
@@ -96,8 +96,8 @@ const Steps = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="text-gray-500 text-center max-w-md mx-auto mb-24"
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-gray-500 text-center text-sm sm:text-base max-w-md mx-auto mb-20 sm:mb-24"
         >
           Every engagement follows our deliberate 4-phase process designed to
           eliminate waste while maximizing creative potential.
@@ -109,9 +109,9 @@ const Steps = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:block absolute top-[130px] left-0 right-0 h-px
-              bg-gradient-to-r from-transparent via-gray-100 to-transparent"
+              bg-gradient-to-r from-transparent via-gray-100 to-transparent contain-paint"
           />
 
           {/* Steps grid */}
@@ -120,16 +120,16 @@ const Steps = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-16 relative z-10
-              place-items-center md:place-items-start md:ml-20"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-14 md:gap-16 relative z-10
+              place-items-center md:place-items-start md:ml-0 lg:ml-20"
           >
             {stepsData.map((step) => (
               <motion.div
                 key={step.step}
                 variants={itemVariants}
-                className="flex flex-col items-center text-center md:items-start md:text-left"
+                className="flex flex-col items-center text-center md:items-start md:text-left contain-content"
               >
-                <div className="mb-7 flex flex-col items-center md:items-start">
+                <div className="mb-6 sm:mb-7 flex flex-col items-center md:items-start">
                   <div className="inline-block mb-3">
                     <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-12 h-12 rounded-xl flex items-center justify-center">
                       <span className="text-white text-xl font-semibold tabular-nums">

@@ -38,22 +38,22 @@ export function Contact() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-120px" }}
-      className="relative py-20 sm:py-28 lg:py-32 overflow-x-hidden"
+      className="relative py-16 sm:py-20 lg:py-32 overflow-x-hidden"
     >
       {/* Background glow (static, no animation) */}
       <div className="absolute inset-0 pointer-events-none contain-paint">
         <div
           className="absolute top-1/3 left-1/2 -translate-x-1/2
-          w-[360px] h-[360px] sm:w-[420px] sm:h-[420px]
-          rounded-full bg-primary/10 blur-[120px]"
+          w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px]
+          rounded-full bg-primary/10 blur-[100px] sm:blur-[120px] gpu-accelerate"
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
         {/* Header */}
         <motion.div
           variants={fadeUp}
-          className="max-w-3xl mb-16 sm:mb-20 lg:mb-24"
+          className="max-w-3xl mb-14 sm:mb-16 lg:mb-24"
         >
           <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
             Contact
@@ -138,11 +138,12 @@ function ContactRow({
         group flex flex-col sm:flex-row
         sm:items-center sm:justify-between
         gap-4 sm:gap-0
-        py-6 sm:py-8
+        py-5 sm:py-6 md:py-8
         border-b border-border
-        transition-colors
+        transition-colors duration-200
         hover:border-primary/50
-        will-change-transform
+        focus-ring-inset
+        touch-target
       "
     >
       <div className="flex gap-4">

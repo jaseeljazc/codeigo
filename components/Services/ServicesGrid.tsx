@@ -106,7 +106,7 @@ const ServicesGrid = () => {
               if (!e?.currentTarget) return;
               (e.currentTarget as HTMLElement).style.willChange = "auto";
             }}
-         className={`group relative
+            className={`group relative
   rounded-2xl p-5 sm:p-6
   bg-white/20
   border border-white/30
@@ -116,7 +116,6 @@ const ServicesGrid = () => {
   overflow-hidden
   contain-paint
   ${service.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
-
           >
             {/* Hover gradient (CSS only – no JS state) */}
             <div
@@ -140,8 +139,6 @@ const ServicesGrid = () => {
               </h3>
 
               <p className="text-slate-600 mb-6">{service.description}</p>
-
-          
             </div>
           </motion.div>
         ))}

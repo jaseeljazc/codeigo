@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import GradientText from "./ui/GradientText";
 
 export function About() {
   const prefersReducedMotion = useReducedMotion();
@@ -52,7 +53,8 @@ export function About() {
             className="space-y-5 sm:space-y-6"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 leading-tight tracking-tight">
-              Codeigo Creations
+              Codeigo  {" "}
+              <GradientText text="Creations" />
             </h2>
 
             <div className="space-y-5 sm:space-y-6 text-gray-600 leading-relaxed">

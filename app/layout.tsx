@@ -4,6 +4,8 @@ import "./globals.css";
 
 import { BackgroundEffects } from "../components/BackgroundEffects";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "@/components/Footer";
+import { BackgroundGlow } from "@/components/ui/BackgroundGlow";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +42,7 @@ export default function RootLayout({
       >
         {/* Background visuals (must stay behind everything) */}
         <BackgroundEffects />
+      <BackgroundGlow/>
 
         {/* Global navigation */}
         <Navbar />
@@ -48,7 +51,7 @@ export default function RootLayout({
         <main className="relative z-10">
           {children}
         </main>
-
+<Footer />
     
       </body>
     </html>

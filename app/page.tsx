@@ -3,22 +3,20 @@
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { Footer } from "../components/Footer";
-import { About } from "./about/About";
-import { Services } from "./service/Services";
-import Steps from "./steps/Steps";
-import { Contact } from "./contact/Contact";
+import { About } from "../components/About";
+import { ServicesHome } from "../components/Services/ServicesHome";
+import Steps from "../components/Steps";
+import { ContactGrid } from "../components/contact/ContactGrid";
 
 export default function HomePage() {
   return (
     <div className="relative min-h-screen ">
-
       <main className="relative z-10">
         <Hero />
-        <Services />
+        <ServicesHome />
         <About />
         <Steps />
-        <Contact />
-        <Footer />
+        <ContactGrid />
       </main>
     </div>
   );

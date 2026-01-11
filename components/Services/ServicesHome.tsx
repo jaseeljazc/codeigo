@@ -1,20 +1,14 @@
 import { motion, Variants, useReducedMotion } from "framer-motion";
-import ServicesGrid from "../../components/ServicesGrid";
+import ServicesGrid from "./ServicesGrid";
+import GradientText from "../ui/GradientText";
 
-export function Services() {
+export function ServicesHome() {
   return (
     <section
       id="services"
       className="relative py-16 sm:py-20 md:py-32 overflow-hidden"
     >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute
-          -top-[320px] -left-[320px]
-          w-[580px] h-[580px] rounded-full
-          bg-linear-to-tr from-cyan-400/20 to-blue-500/20
-          blur-[120px] gpu-accelerate contain-paint"
-      />
+     
 
       <div className="absolute inset-0 -z-10 contain-paint">
         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px] gpu-accelerate" />
@@ -31,7 +25,8 @@ export function Services() {
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-5 sm:mb-6">
-            What we do
+            What we {" "}
+            <GradientText text="do" />{" "}
           </h2>
           <p className="text-xl text-slate-600">
             We focus on a few things and do them exceptionally well.

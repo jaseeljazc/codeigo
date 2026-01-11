@@ -2,6 +2,7 @@
 
 import { motion, Variants, useReducedMotion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight, Instagram } from "lucide-react";
+import GradientText from "../ui/GradientText";
 
 /* ---------------- Variants ---------------- */
 
@@ -28,7 +29,7 @@ const fadeUp: Variants = {
 
 /* ---------------- Component ---------------- */
 
-export function Contact() {
+export function ContactGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -38,7 +39,7 @@ export function Contact() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-120px" }}
-      className="relative py-16 sm:py-20 lg:py-32 overflow-x-hidden"
+      className="relative py-16 sm:py-20  overflow-x-hidden"
     >
       {/* Background glow (static, no animation) */}
       <div className="absolute inset-0 pointer-events-none contain-paint">
@@ -60,7 +61,8 @@ export function Contact() {
           </p>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight mb-4 sm:mb-6">
-            Let’s work together
+            Let’s work {"  "}
+            <GradientText text="together" />{" "}
           </h2>
 
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -94,13 +96,7 @@ export function Contact() {
             description="Showcasing our work and client success stories"
             href="#"
           />
-          <ContactRow
-            icon={<Instagram size={18} />}
-            label="Instagram"
-            value="Codeigo-creations"
-            description="Available across all time zones"
-            href="#"
-          />
+        
         </motion.div>
 
         {/* Footer note (no animation = smoother) */}

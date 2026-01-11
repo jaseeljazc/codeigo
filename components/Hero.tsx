@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -15,7 +16,7 @@ export function Hero() {
       className="relative min-h-screen flex items-center pt-10 overflow-hidden contain-paint"
     >
       {/* ===== Optimized Animated Blobs ===== */}
-      <motion.div
+      {/* <motion.div
         aria-hidden
         className="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full
           bg-linear-to-br from-indigo-500/25 to-purple-500/25
@@ -27,7 +28,7 @@ export function Hero() {
         className="absolute bottom-[-200px] left-[-200px] w-[480px] h-[480px] rounded-full
           bg-linear-to-tr from-cyan-400/20 to-blue-500/20
           blur-[120px] gpu-accelerate"
-      />
+      /> */}
 
       {/* ===== CSS Noise (NO IMAGE, NO DECODE COST) ===== */}
       <div
@@ -81,32 +82,33 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
-            <button
-              onClick={() => scrollToSection("#contact")}
-              className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5
+            <Link href="/contact">
+              <button
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5
                 bg-primary text-primary-foreground font-medium rounded-xl
                 shadow-lg shadow-primary/20
                 hover:shadow-xl hover:shadow-primary/30
                 transition-all duration-300 ease-out
                 touch-target focus-ring"
-            >
-              Start a Project
-              <ArrowRight
-                size={18}
-                className="transition-transform duration-300 ease-out group-hover:translate-x-1"
-              />
-            </button>
-
-            <button
-              onClick={() => scrollToSection("#services")}
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5
+              >
+                Start a Project
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                />
+              </button>
+            </Link>
+            <Link href="services">
+              <button
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5
                 text-foreground border border-black/10 font-medium rounded-xl
                 hover:bg-muted/70 transition-all duration-300 ease-out shadow-lg
                 hover:border-black/10 hover:shadow-xl hover:shadow-primary/30
                 touch-target focus-ring"
-            >
-              View Services
-            </button>
+              >
+                View Services
+              </button>
+            </Link>
           </motion.div>
         </div>
       </div>

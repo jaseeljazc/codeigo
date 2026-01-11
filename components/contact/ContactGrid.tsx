@@ -42,11 +42,15 @@ export function ContactGrid() {
       className="relative py-16 sm:py-20  overflow-x-hidden"
     >
       {/* Background glow (static, no animation) */}
-      <div className="absolute inset-0 pointer-events-none contain-paint">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ contain: "strict" }}
+      >
         <div
           className="absolute top-1/3 left-1/2 -translate-x-1/2
           w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px]
-          rounded-full bg-primary/10 blur-[100px] sm:blur-[120px] gpu-accelerate"
+          rounded-full bg-primary/10 blur-[100px] sm:blur-[120px] transform-gpu"
+          style={{ willChange: "transform" }}
         />
       </div>
 
@@ -96,7 +100,6 @@ export function ContactGrid() {
             description="Showcasing our work and client success stories"
             href="#"
           />
-        
         </motion.div>
 
         {/* Footer note (no animation = smoother) */}

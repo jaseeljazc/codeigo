@@ -28,6 +28,7 @@ import {
   SiShopify,
   SiOdoo,
 } from "react-icons/si";
+import FloatingDots from "../ui/FloatingDots";
 
 type Tool = {
   icon: any;
@@ -81,7 +82,6 @@ const services: Service[] = [
       { icon: FaStripe, name: "Stripe", color: "text-indigo-500" },
       { icon: SiMongodb, name: "MongoDB", color: "text-green-600" },
       { icon: SiShopify, name: "Shopify", color: "text-green-500" },
-
     ],
   },
   {
@@ -128,16 +128,7 @@ const services: Service[] = [
 export default function Services() {
   return (
     <div className="relative min-h-screen ">
-   
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-70 right-[-300px]
-    w-[580px] h-[580px] rounded-full
-    bg-linear-to-tr from-cyan-400/10 to-blue-500/10
-    blur-[120px]
-    -translate-x-1/3 -translate-y-1/3
-    gpu-accelerate contain-paint"
-      />
+  <FloatingDots/>
 
       {/* Services List */}
       <section className="section-container py-24 md:py-32">
@@ -158,8 +149,9 @@ export default function Services() {
               return (
                 <div
                   key={i}
-                  className="group relative pb-16 border-b border-border last:border-0 last:pb-0"
+                  className="group relative pb-16 border-b border-border last:border-0 last:pb-0 contain-paint"
                 >
+                  <FloatingDots/>
                   <div className="flex items-start gap-6 mb-6">
                     <div className="flex-1 min-w-0">
                       {/* Icon + Title */}

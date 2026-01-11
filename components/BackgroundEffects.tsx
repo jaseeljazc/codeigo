@@ -29,7 +29,10 @@
 
 export function BackgroundEffects() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden contain-strict">
+    <div
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      style={{ contain: "strict" }}
+    >
       {/* Base */}
       <div className="absolute inset-0 bg-white" />
 
@@ -56,18 +59,20 @@ export function BackgroundEffects() {
 
       {/* Soft ambient glow (still safe) */}
       <div
-        className="absolute inset-0 opacity-[0.06] gpu-accelerate"
+        className="absolute inset-0 opacity-[0.06] transform-gpu"
         style={{
           background:
             "radial-gradient(circle at 25% 30%, hsl(var(--primary) / 0.35), transparent 55%)",
+          willChange: "transform",
         }}
       />
 
       <div
-        className="absolute inset-0 opacity-[0.05] gpu-accelerate"
+        className="absolute inset-0 opacity-[0.05] transform-gpu"
         style={{
           background:
             "radial-gradient(circle at 75% 55%, hsl(var(--accent-foreground) / 0.3), transparent 60%)",
+          willChange: "transform",
         }}
       />
     </div>

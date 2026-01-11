@@ -32,7 +32,7 @@ export function About() {
           <div className="absolute bottom-8 left-8 w-40 h-40 bg-violet-50 rounded-2xl border border-violet-100 rotate-3 gpu-accelerate" />
 
           {/* Decorative dots */}
-          <div className="absolute top-16 left-16 w-3 h-3 rounded-full bg-violet-600 animate-pulse" />
+          <div className="absolute top-16 left-16 w-3 h-3 rounded-full bg-violet-600 " />
           <div className="absolute bottom-20 right-20 w-2 h-2 rounded-full bg-violet-400" />
           <div className="absolute top-1/2 right-12 w-2.5 h-2.5 rounded-full bg-violet-300" />
         </motion.div>

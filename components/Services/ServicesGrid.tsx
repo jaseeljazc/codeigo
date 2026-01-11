@@ -99,12 +99,12 @@ const ServicesGrid = () => {
             variants={cardVariants}
             whileHover={{ y: -6 }}
             onHoverStart={(e) => {
-              if (!e?.currentTarget) return;
-              (e.currentTarget as HTMLElement).style.willChange = "transform";
+              const target = e.currentTarget as HTMLElement;
+              if (target) target.style.willChange = "transform, box-shadow";
             }}
             onHoverEnd={(e) => {
-              if (!e?.currentTarget) return;
-              (e.currentTarget as HTMLElement).style.willChange = "auto";
+              const target = e.currentTarget as HTMLElement;
+              if (target) target.style.willChange = "auto";
             }}
             className={`group relative
   rounded-2xl p-5 sm:p-6
@@ -114,7 +114,7 @@ const ServicesGrid = () => {
   transition-[transform,box-shadow,background] duration-300
   hover:shadow-2xl hover:bg-white/70
   overflow-hidden
-  contain-paint
+  contain-paint transform-gpu
   ${service.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
           >
             {/* Hover gradient (CSS only – no JS state) */}

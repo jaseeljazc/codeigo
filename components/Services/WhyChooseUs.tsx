@@ -1,28 +1,30 @@
 const VALUES = [
   {
     title: "Performance-Driven",
-    description: "Fast, optimized applications built with clean code and modern technologies."
+    description:
+      "Fast, optimized applications built with clean code and modern technologies.",
   },
   {
     title: "User-Centered",
-    description: "Intuitive interfaces designed to improve engagement and conversion."
+    description:
+      "Intuitive interfaces designed to improve engagement and conversion.",
   },
   {
     title: "Future-Ready",
-    description: "Scalable solutions that grow seamlessly with your business."
+    description: "Scalable solutions that grow seamlessly with your business.",
   },
   {
     title: "Maintainable Code",
-    description: "Clean, readable codebases following industry best practices."
+    description: "Clean, readable codebases following industry best practices.",
   },
   {
     title: "Transparent Process",
-    description: "Clear communication keeping you informed at every stage."
+    description: "Clear communication keeping you informed at every stage.",
   },
   {
     title: "Long-Term Partnership",
-    description: "Ongoing support and continuous product evolution."
-  }
+    description: "Ongoing support and continuous product evolution.",
+  },
 ];
 
 export default function WhyChooseUs() {
@@ -58,8 +60,9 @@ export default function WhyChooseUs() {
                 transition-all duration-300 ease-out
                 hover:-translate-y-1 hover:border-violet-200/80 hover:shadow-xl hover:shadow-violet-200/60
                 motion-reduce:transition-none
-                transform-gpu will-change-transform
+                transform-gpu contain-paint
               "
+              style={{ willChange: "transform" }}
             >
               {/* Hover Gradient */}
               <div
